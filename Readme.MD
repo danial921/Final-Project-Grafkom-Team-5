@@ -7,3 +7,6 @@
 | 05111940000007	| Naufal Fajar Imani |
 | 05111940000157	| Kevin Davi Samuel |
 | 05111940000223	| Naufal Fabian Wibowo |
+
+# Project Preview #
+!['Gambarawal'](dokumentasi/preview.png)

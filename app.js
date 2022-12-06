@@ -199,16 +199,16 @@ function init() {
       objects.push(root_1);
     });
 
-    gltfLoader_1.load('resource/map/SignPost.gltf', (gltf) =>{
-      gltf.scene.scale.set(0.5, 1, 1);
-      var root_1 = gltf.scene;
-      root_1.position.set(-9,6,38);
-      // root_1.rotation.x += Math.PI/(3);
-      root_1.rotation.y += Math.PI/(3);
-      root_1.rotation.z += Math.PI/(2);
-      scene.add(root_1);
-      objects.push(root_1);
-    });
+    // gltfLoader_1.load('resource/map/SignPost.gltf', (gltf) =>{
+    //   gltf.scene.scale.set(0.5, 1, 1);
+    //   var root_1 = gltf.scene;
+    //   root_1.position.set(-9,6,38);
+    //   // root_1.rotation.x += Math.PI/(3);
+    //   root_1.rotation.y += Math.PI/(3);
+    //   root_1.rotation.z += Math.PI/(2);
+    //   scene.add(root_1);
+    //   objects.push(root_1);
+    // });
 
     gltfLoader_1.load('resource/map/scene.gltf', (gltf) =>{
       gltf.scene.scale.set(0.1, 0.1, 0.1);
@@ -218,11 +218,20 @@ function init() {
       objects.push(root_1);
     });
 
-    gltfLoader_1.load('resource/animals/moose/scene.gltf', (gltf) => {
-      gltf.scene.scale.set(1.8, 1.8, 1.8);
+    gltfLoader_1.load('resource/additional/trees/tree_02.glb', (gltf) =>{
+      gltf.scene.scale.set(2, 2, 2);
       var root_1 = gltf.scene;
-      root_1.position.set(23.,3.15,-15.);
       root_1.rotation.y += Math.PI/(-5.9);
+      root_1.position.set(5,0,-20);
+      scene.add(root_1);
+      objects.push(root_1);
+    });
+
+    gltfLoader_1.load('resource/additional/garden/kursitaman.gltf', (gltf) => {
+      gltf.scene.scale.set(3, 3, 3);
+      var root_1 = gltf.scene;
+      root_1.rotation.y += Math.PI/(-5.9);
+      root_1.position.set(20,0,-20);
       scene.add(root_1);
       objects.push(root_1);
     });
@@ -245,14 +254,6 @@ function init() {
       objects.push(root_1);
     });
 
-    gltfLoader_1.load('resource/animals/skunk/scene.gltf', (gltf) => {
-      gltf.scene.scale.set(0.5, .5, .5);
-      var root_1 = gltf.scene;
-      root_1.position.set(-10.,0.1,-20.);
-      root_1.rotation.y += Math.PI/(2.5);
-      scene.add(root_1);
-      objects.push(root_1);
-    });
 
     gltfLoader_1.load('resource/animals/fox/scene.gltf', (gltf) => {
       gltf.scene.scale.set(1.3, 1.3, 1.3);
@@ -281,7 +282,7 @@ function init() {
   loader.load('resource/animals/cow/Cow.gltf', function (result) {
     // correctly position the scene
     result.scene.scale.set(1.5, 1.5, 1.5);
-    result.scene.position.set(0.,3,0.);
+    result.scene.position.set(-10.,3,-20.);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
     scene.add(result.scene)
@@ -290,18 +291,40 @@ function init() {
     mixer = new THREE.AnimationMixer( result.scene );
     animationClip = result.animations[6];
     clipAction = mixer.clipAction( animationClip ).play();    
-    cowcontrol();
   });
 
-  function cowcontrol() {
+
+  var deermixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {deermixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var loader = new THREE.GLTFLoader();
+  loader.load('resource/additional/Animal/Deer.gltf', function (result) {
+    // correctly position the scene
+    result.scene.scale.set(1.5, 1.5, 1.5);
+    result.scene.position.set(10.,3,-20.);
+    result.scene.translateY(-3);
+    result.scene.rotateY(-0.3*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    deermixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[7];
+    clipAction = deermixer.clipAction( animationClip ).play();    
+    deercontrol();
+  });
+
+  function deercontrol() {
     var gui = new dat.GUI();
     var mixerFolder = gui.addFolder("testing")
-    mixerFolder.add(mixerControls, "time").listen()
-    mixerFolder.add(mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {mixer.timeScale = timeScale});
-    mixerFolder.add(mixerControls, "stopAllAction").listen()
-
-    controls = addClipActionFolder("ClipAction 1", gui, clipAction, animationClip);
+    mixerFolder.add(deermixerControls, "time").listen()
+    mixerFolder.add(deermixerControls, "timeScale", 0, 5).onChange(function (timeScale) {mixer.timeScale = timeScale});
+    mixerFolder.add(deermixerControls, "stopAllAction").listen()
     dat.GUI.toggleHide();
+    controls = addClipActionFolder("ClipAction 1", gui, clipAction, animationClip);
   }
 
   render();
@@ -369,6 +392,14 @@ function init() {
     if (mixer && clipAction && controls) {
       mixer.update( delta );
       controls.time = mixer.time;
+      controls.effectiveTimeScale = clipAction.getEffectiveTimeScale();
+      controls.effectiveWeight = clipAction.getEffectiveWeight();
+    }
+
+    // deer mixer
+    if (deermixer && clipAction && controls) {
+      deermixer.update( delta );
+      controls.time = deermixer.time;
       controls.effectiveTimeScale = clipAction.getEffectiveTimeScale();
       controls.effectiveWeight = clipAction.getEffectiveWeight();
     }

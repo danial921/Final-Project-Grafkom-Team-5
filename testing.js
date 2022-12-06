@@ -23,18 +23,18 @@ function init() {
   
   initDefaultLighting(scene);
   var loader = new THREE.GLTFLoader();
-  loader.load('resource/animals/cow/Cow.gltf', function (result) {
+  loader.load('resource/additional/garden/kursitaman.gltf', function (result) {
     // correctly position the scene
     result.scene.scale.set(0.8, 0.8, 0.8);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
     scene.add(result.scene)
 
-    // setup the mixer
-    mixer = new THREE.AnimationMixer( result.scene );
-    animationClip = result.animations[6];
-    clipAction = mixer.clipAction( animationClip ).play();    
-    cowcontrol();
+    // // setup the mixer
+    // mixer = new THREE.AnimationMixer( result.scene );
+    // animationClip = result.animations[6];
+    // clipAction = mixer.clipAction( animationClip ).play();    
+    // cowcontrol();
   });
 
   function cowcontrol() {

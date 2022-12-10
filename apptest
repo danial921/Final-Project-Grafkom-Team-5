@@ -1,0 +1,72 @@
+
+function init() {
+  var stats = initStats();
+  var renderer = initRenderer();
+  var camera = initCamera();
+  var scene = new THREE.Scene();
+  scene.add(new THREE.AmbientLight(0x333333));
+  
+  camera.position.set(0, 0, 20);
+
+  var trackballControls = initTrackballControls(camera, renderer);
+  var clock = new THREE.Clock();
+
+  var Cow2mixer = new THREE.AnimationMixer();
+  var Cow2clipAction
+  // var animationClip
+  // var mesh
+  var Cow2controls
+  var Cow2mixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {Cow2mixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var Cow2loader = new THREE.GLTFLoader();
+  Cow2loader.load('../../../Cow.gltf', Cow2);
+  
+  function Cow2(result) {
+    // correctly position the scene
+    result.scene.scale.set(0.8, 0.8, 0.8);
+    result.scene.translateY(-3);
+    result.scene.rotateY(-0.3*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    Cow2mixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[6];
+    Cow2clipAction = Cow2mixer.clipAction( animationClip ).play();    
+    animationClip = Cow2clipAction.getClip();
+
+    Cow2mixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(Cow2mixerControls, "time").listen()
+    mixerFolder.add(Cow2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {Cow2mixer.timeScale = timeScale});
+    mixerFolder.add(Cow2mixerControls, "stopAllAction").listen()
+    
+    Cow2controls = addClipActionFolder("ClipAction 1", gui, Cow2clipAction, animationClip);
+  }
+
+  render();
+  function render() {
+    stats.update();
+    var delta = clock.getDelta();
+    trackballControls.update(delta);
+    requestAnimationFrame(render);
+    renderer.render(scene, camera)
+
+    if (Cow2mixer && Cow2clipAction && Cow2controls) {
+      Cow2mixer.update( delta );
+      Cow2controls.time = Cow2mixer.time;
+      Cow2controls.effectiveTimeScale = Cow2clipAction.getEffectiveTimeScale();
+      Cow2controls.effectiveWeight = Cow2clipAction.getEffectiveWeight();
+    }
+  }   
+}

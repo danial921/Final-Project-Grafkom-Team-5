@@ -175,9 +175,6 @@ function init() {
   fpControls_gamepad.lookSpeed = 1.0;
   
   //Load Maps & Models  
-  //Remember to add Maps and models to objects so we can have collision
-  //example :
-  // objects.push(something_that_you_added_to_scene);
   const gltfLoader_1 = new THREE.GLTFLoader();
   gltfLoader_1.load('resource/map/Zoo.gltf', (gltf) => {
     
@@ -187,55 +184,233 @@ function init() {
     scene.add(root);
     // objects.push(root);
   });
-  gltfLoader_1.load('resource/animals/moose/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(1.8, 1.8, 1.8);
-    var root_1 = gltf.scene;
-    root_1.position.set(23.,3.15,-15.);
-    root_1.rotation.y += Math.PI/(-5.9);
-    scene.add(root_1);
-    // objects.push(root_1);
+
+  // Animal Object
+  // Cage1
+  
+  var cowmixer = new THREE.AnimationMixer();
+  var cowclipAction
+  var cowcontrols
+  var cowmixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {cowmixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var cowloader = new THREE.GLTFLoader();
+  cowloader.load('resource/additional/Animal/Cow.gltf', function (result) {
+    // correctly position the scene
+    result.scene.scale.set(1.5, 1.5, 1.5);
+    result.scene.position.set(20.,3,30.);
+    result.scene.translateY(-3);
+    result.scene.rotateY(-0.3*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    cowmixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[6];
+    cowclipAction = cowmixer.clipAction( animationClip ).play();    
+    animationClip = cowclipAction.getClip();
+
+    cowmixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(cowmixerControls, "time").listen()
+    mixerFolder.add(cowmixerControls, "timeScale", 0, 5).onChange(function (timeScale) {cowmixer.timeScale = timeScale});
+    mixerFolder.add(cowmixerControls, "stopAllAction").listen()
+    
+    cowcontrols = addClipActionFolder("ClipAction 1", gui, cowclipAction, animationClip);
   });
 
-  gltfLoader_1.load('resource/animals/kangaroo/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(10.8, 10.8, 10.8);
-    var root_1 = gltf.scene;
-    root_1.position.set(-10.,1.5,-30.);
-    root_1.rotation.y += Math.PI/(2.9);
-    scene.add(root_1);
-    // objects.push(root_1);
+  var Cow1mixer = new THREE.AnimationMixer();
+  var Cow1clipAction
+  // var animationClip
+  // var mesh
+  var Cow1controls
+  var Cow1mixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {Cow1mixer.stopAllAction()},
+  }
+
+  initDefaultLighting(scene);
+  var Cow1loader = new THREE.GLTFLoader();
+  Cow1loader.load('resource/additional/Animal/Cow.gltf', Cow1);
+
+  var Cow2mixer = new THREE.AnimationMixer();
+  var Cow2clipAction
+  // var animationClip
+  // var mesh
+  var Cow2controls
+  var Cow2mixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {Cow2mixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var Cow2loader = new THREE.GLTFLoader();
+  Cow2loader.load('resource/additional/Animal/Cow.gltf', Cow2);
+
+  var Bullmixer = new THREE.AnimationMixer();
+  var BullclipAction
+  // var animationClip
+  // var mesh
+  var Bullcontrols
+  var BullmixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {Bullmixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var Bullloader = new THREE.GLTFLoader();
+  Bullloader.load('resource/additional/Animal/Bull.gltf', function (result) {
+    // correctly position the scene
+    result.scene.position.set(20.,4,15.);
+    result.scene.scale.set(1.5, 1.5, 1.5);
+    result.scene.translateY(-3);
+    result.scene.rotateY(1.5*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    Bullmixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[3];
+    BullclipAction = Bullmixer.clipAction( animationClip ).play();    
+    animationClip = BullclipAction.getClip();
+
+    Bullmixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(BullmixerControls, "time").listen()
+    mixerFolder.add(BullmixerControls, "timeScale", 0, 5).onChange(function (timeScale) {Bullmixer.timeScale = timeScale});
+    mixerFolder.add(BullmixerControls, "stopAllAction").listen()
+    
+    Bullcontrols = addClipActionFolder("ClipAction 1", gui, BullclipAction, animationClip);
   });
 
-  gltfLoader_1.load('resource/animals/hippo/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(3.8, 3.8, 3.8);
-    var root_1 = gltf.scene;
-    root_1.position.set(-30.,2.3,18.);
-    root_1.rotation.y += Math.PI/(-2);
-    scene.add(root_1);
-    // objects.push(root_1);
+  var Bull1mixer = new THREE.AnimationMixer();
+  var Bull1clipAction
+  // var animationClip
+  // var mesh
+  var Bull1controls
+  var Bull1mixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {Bull1mixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var Bull1loader = new THREE.GLTFLoader();
+  Bull1loader.load('resource/additional/Animal/Bull.gltf', Bull1);
+  // Cage2
+
+  var horsemixer = new THREE.AnimationMixer();
+  var horseclipAction
+  // var animationClip
+  // var mesh
+  var Horsecontrols
+  var horsemixerControls = {
+    time: 0,
+    timeScale: 1,
+    stopAllAction: function() {horsemixer.stopAllAction()},
+  }
+  
+  initDefaultLighting(scene);
+  var Horseloader = new THREE.GLTFLoader();
+  Horseloader.load('resource/additional/Animal/Horse.gltf', function (result) {
+    // correctly position the scene
+    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.position.set(-23.,3,30.);
+    result.scene.translateY(-3);
+    result.scene.rotateY(0.5*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    horsemixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[6];
+    horseclipAction = horsemixer.clipAction( animationClip ).play();    
+    animationClip = horseclipAction.getClip();
+
+    horsemixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(horsemixerControls, "time").listen()
+    mixerFolder.add(horsemixerControls, "timeScale", 0, 5).onChange(function (timeScale) {horsemixer.timeScale = timeScale});
+    mixerFolder.add(horsemixerControls, "stopAllAction").listen()
+    
+    Horsecontrols = addClipActionFolder("ClipAction 1", gui, horseclipAction, animationClip);
   });
 
-  gltfLoader_1.load('resource/animals/skunk/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(0.5, .5, .5);
-    var root_1 = gltf.scene;
-    root_1.position.set(-10.,0.1,-20.);
-    root_1.rotation.y += Math.PI/(2.5);
-    scene.add(root_1);
-    // objects.push(root_1);
-  });
-
-  gltfLoader_1.load('resource/animals/fox/scene.gltf', (gltf) => {
-    gltf.scene.scale.set(1.3, 1.3, 1.3);
-    var root_1 = gltf.scene;
-    root_1.position.set(10.,1.4,22.);
-    root_1.rotation.y += Math.PI/(-2.5);
-    scene.add(root_1);
-    // objects.push(root_1);
-  });
 
   render();
   function render() {
   
     //requestAnimationFrame(render);
+
+    stats.update();
+    var delta = clock.getDelta();
+
+    if (cowmixer && cowclipAction && cowcontrols) {
+      cowmixer.update( delta );
+      cowcontrols.time = cowmixer.time;
+      cowcontrols.effectiveTimeScale = cowclipAction.getEffectiveTimeScale();
+      cowcontrols.effectiveWeight = cowclipAction.getEffectiveWeight();
+    }
+
+    if (Cow2mixer && Cow2clipAction && Cow2controls) {
+      Cow2mixer.update( delta );
+      Cow2controls.time = Cow2mixer.time;
+      Cow2controls.effectiveTimeScale = Cow2clipAction.getEffectiveTimeScale();
+      Cow2controls.effectiveWeight = Cow2clipAction.getEffectiveWeight();
+    }
+
+    if (Cow1mixer && Cow1clipAction && Cow1controls) {
+      Cow1mixer.update( delta );
+      Cow1controls.time = Cow1mixer.time;
+      Cow1controls.effectiveTimeScale = Cow1clipAction.getEffectiveTimeScale();
+      Cow1controls.effectiveWeight = Cow1clipAction.getEffectiveWeight();
+    }
+
+    if (Bullmixer && BullclipAction && Bullcontrols) {
+      Bullmixer.update( delta );
+      Bullcontrols.time = Bullmixer.time;
+      Bullcontrols.effectiveTimeScale = BullclipAction.getEffectiveTimeScale();
+      Bullcontrols.effectiveWeight = BullclipAction.getEffectiveWeight();
+    }
+
+    if (Bull1mixer && Bull1clipAction && Bull1controls) {
+      Bull1mixer.update( delta );
+      Bull1controls.time = Bull1mixer.time;
+      Bull1controls.effectiveTimeScale = Bull1clipAction.getEffectiveTimeScale();
+      Bull1controls.effectiveWeight = Bull1clipAction.getEffectiveWeight();
+    }
+
+    if (horsemixer && horseclipAction && Horsecontrols) {
+      horsemixer.update( delta );
+      Horsecontrols.time = horsemixer.time;
+      Horsecontrols.effectiveTimeScale = horseclipAction.getEffectiveTimeScale();
+      Horsecontrols.effectiveWeight = horseclipAction.getEffectiveWeight();
+    }
+
+
+
     //Render parameters for first person locked
     const time = performance.now();
     if ( fpControls_locked.isLocked === true ) {
@@ -289,5 +464,93 @@ function init() {
     fpControls_locked.load;
     requestAnimationFrame(render);
     renderer.render(scene, camera)
-  }   
+  }
+  
+  function Bull1 (result) {
+    // correctly position the scene
+    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.position.set(50.,3.5,30.);
+    result.scene.translateY(-3);
+    result.scene.rotateY(-2*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    Bull1mixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[6];
+    Bull1clipAction = Bull1mixer.clipAction( animationClip ).play();    
+    animationClip = Bull1clipAction.getClip();
+
+    Bull1mixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(Bull1mixerControls, "time").listen()
+    mixerFolder.add(Bull1mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {Bull1mixer.timeScale = timeScale});
+    mixerFolder.add(Bull1mixerControls, "stopAllAction").listen()
+    
+    Bull1controls = addClipActionFolder("ClipAction 1", gui, Bull1clipAction, animationClip);
+  }
+
+  function Cow1(result) {
+    // correctly position the scene
+    result.scene.scale.set(1.6, 1.6, 1.6);
+    result.scene.position.set(75.,3.5,30.);
+    result.scene.translateY(-3);
+    result.scene.rotateY(1*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    Cow1mixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[3];
+    Cow1clipAction = Cow1mixer.clipAction( animationClip ).play();    
+    animationClip = Cow1clipAction.getClip();
+
+    Cow1mixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(Cow1mixerControls, "time").listen()
+    mixerFolder.add(Cow1mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {Cow1mixer.timeScale = timeScale});
+    mixerFolder.add(Cow1mixerControls, "stopAllAction").listen()
+    
+    Cow1controls = addClipActionFolder("ClipAction 1", gui, Cow1clipAction, animationClip);
+  }
+
+  function Cow2(result) {
+    // correctly position the scene
+    result.scene.position.set(75.,3.5,5.);
+    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.translateY(-3);
+    result.scene.rotateY(-2*Math.PI)
+    scene.add(result.scene)
+
+    // setup the mixer
+    Cow2mixer = new THREE.AnimationMixer( result.scene );
+    animationClip = result.animations[6];
+    Cow2clipAction = Cow2mixer.clipAction( animationClip ).play();    
+    animationClip = Cow2clipAction.getClip();
+
+    Cow2mixer.addEventListener('finished',function(e){
+      secondAction.play()
+    });
+
+    // add the animation controls
+    var gui = new dat.GUI();
+    dat.GUI.toggleHide();
+    var mixerFolder = gui.addFolder("AnimationMixer")
+    mixerFolder.add(Cow2mixerControls, "time").listen()
+    mixerFolder.add(Cow2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {Cow2mixer.timeScale = timeScale});
+    mixerFolder.add(Cow2mixerControls, "stopAllAction").listen()
+    
+    Cow2controls = addClipActionFolder("ClipAction 1", gui, Cow2clipAction, animationClip);
+  }
+
 }

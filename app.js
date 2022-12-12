@@ -190,10 +190,11 @@ function init() {
     scene.add(root);
     // objects.push(root);
   });
-
+  
+  initDefaultLighting(scene);
   // Animal Object
   // Cage1
-
+  
   var cowmixer = new THREE.AnimationMixer();
   var cowclipAction
   var cowcontrols
@@ -203,7 +204,7 @@ function init() {
     stopAllAction: function() {cowmixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var cowloader = new THREE.GLTFLoader();
   cowloader.load(CowPath, function (result) {
     // correctly position the scene
@@ -245,7 +246,7 @@ function init() {
     stopAllAction: function() {Cow1mixer.stopAllAction()},
   }
 
-  initDefaultLighting(scene);
+  
   var Cow1loader = new THREE.GLTFLoader();
   Cow1loader.load(CowPath, Cow1);
 
@@ -260,7 +261,7 @@ function init() {
     stopAllAction: function() {Cow2mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Cow2loader = new THREE.GLTFLoader();
   Cow2loader.load(CowPath, Cow2);
 
@@ -275,7 +276,7 @@ function init() {
     stopAllAction: function() {Bullmixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Bullloader = new THREE.GLTFLoader();
   Bullloader.load('resource/additional/Animal/Bull.gltf', function (result) {
     // correctly position the scene
@@ -328,12 +329,12 @@ function init() {
     stopAllAction: function() {Bull2mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var cowloader = new THREE.GLTFLoader();
   cowloader.load('resource/additional/Animal/Bull.gltf',Bull2 );
 
   
-  initDefaultLighting(scene);
+  
   var Bull1loader = new THREE.GLTFLoader();
   Bull1loader.load('resource/additional/Animal/Bull.gltf', Bull1);
   // Cage2
@@ -349,7 +350,7 @@ function init() {
     stopAllAction: function() {horsemixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Horseloader = new THREE.GLTFLoader();
   Horseloader.load('resource/additional/Animal/Horse.gltf', function (result) {
     // correctly position the scene
@@ -391,7 +392,7 @@ function init() {
     stopAllAction: function() {Horse1mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Horse1loader = new THREE.GLTFLoader();
   Horse1loader.load('resource/additional/Animal/Horse_White.gltf',Horse1 );
 
@@ -406,7 +407,7 @@ function init() {
     stopAllAction: function() {Horse2mixer.stopAllAction()},
   }
 
-  initDefaultLighting(scene);
+  
   var cowloader = new THREE.GLTFLoader();
   cowloader.load(HorsePath,Horse2 );
 
@@ -421,7 +422,7 @@ function init() {
     stopAllAction: function() {Horse3mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Horse3loader = new THREE.GLTFLoader();
   Horse3loader.load(WhiteHorsePath,Horse3 );
   
@@ -437,10 +438,10 @@ function init() {
     stopAllAction: function() {Horse4mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var Horse4loader = new THREE.GLTFLoader();
   Horse4loader.load(HorsePath,Horse4 );
-
+  
   var deermixer = new THREE.AnimationMixer();
   var deerclipAction
   var deercontrols
@@ -450,7 +451,7 @@ function init() {
     stopAllAction: function() {deermixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var deerloader = new THREE.GLTFLoader();
   deerloader.load(DeerPath,deer );
 
@@ -463,7 +464,7 @@ function init() {
     stopAllAction: function() {deer2mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var deer2loader = new THREE.GLTFLoader();
   deer2loader.load(DeerPath,deer2 );
 
@@ -476,7 +477,7 @@ function init() {
     stopAllAction: function() {deer3mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var deer3loader = new THREE.GLTFLoader();
   deer3loader.load(DeerPath,deer3 );
 
@@ -489,7 +490,7 @@ function init() {
     stopAllAction: function() {stagmixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var stagloader = new THREE.GLTFLoader();
   stagloader.load(ManDeerPath,stag );
 
@@ -502,7 +503,7 @@ function init() {
     stopAllAction: function() {stag2mixer.stopAllAction()},
   }
   
-  initDefaultLighting(scene);
+  
   var stag2loader = new THREE.GLTFLoader();
   stag2loader.load(ManDeerPath,stag2 );
 
@@ -515,7 +516,7 @@ function init() {
 
     stats.update();
     var delta = clock.getDelta();
-
+    
     if (cowmixer && cowclipAction && cowcontrols) {
       cowmixer.update( delta );
       cowcontrols.time = cowmixer.time;
@@ -593,7 +594,7 @@ function init() {
       Horse4controls.effectiveTimeScale = Horse4clipAction.getEffectiveTimeScale();
       Horse4controls.effectiveWeight = Horse4clipAction.getEffectiveWeight();
     }
-    // */
+    
     if (deermixer && deerclipAction && deercontrols) {
       deermixer.update( delta );
       deercontrols.time = deermixer.time;
@@ -629,6 +630,7 @@ function init() {
       stag2controls.effectiveWeight = stag2clipAction.getEffectiveWeight();
     }
 
+    // middle2
 
     //Render parameters for first person locked
     const time = performance.now();
@@ -937,7 +939,6 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
-    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deermixerControls, "time").listen()
     mixerFolder.add(deermixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deermixer.timeScale = timeScale});
@@ -967,7 +968,6 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
-    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deer2mixerControls, "time").listen()
     mixerFolder.add(deer2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deer2mixer.timeScale = timeScale});
@@ -996,7 +996,6 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
-    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deer3mixerControls, "time").listen()
     mixerFolder.add(deer3mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deer3mixer.timeScale = timeScale});
@@ -1025,7 +1024,6 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
-    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(stagmixerControls, "time").listen()
     mixerFolder.add(stagmixerControls, "timeScale", 0, 5).onChange(function (timeScale) {stagmixer.timeScale = timeScale});
@@ -1054,7 +1052,6 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
-    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(stag2mixerControls, "time").listen()
     mixerFolder.add(stag2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {stag2mixer.timeScale = timeScale});
@@ -1064,5 +1061,5 @@ function init() {
   }
 
   // down
-v
+  dat.GUI.toggleHide();
 }

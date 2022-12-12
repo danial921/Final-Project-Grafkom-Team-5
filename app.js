@@ -190,7 +190,7 @@ function init() {
     scene.add(root);
     // objects.push(root);
   });
-  
+
   initDefaultLighting(scene);
   // Animal Object
   // Cage1
@@ -939,6 +939,7 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
+    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deermixerControls, "time").listen()
     mixerFolder.add(deermixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deermixer.timeScale = timeScale});
@@ -968,6 +969,7 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
+    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deer2mixerControls, "time").listen()
     mixerFolder.add(deer2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deer2mixer.timeScale = timeScale});
@@ -996,6 +998,7 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
+    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(deer3mixerControls, "time").listen()
     mixerFolder.add(deer3mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {deer3mixer.timeScale = timeScale});
@@ -1024,6 +1027,7 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
+    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(stagmixerControls, "time").listen()
     mixerFolder.add(stagmixerControls, "timeScale", 0, 5).onChange(function (timeScale) {stagmixer.timeScale = timeScale});
@@ -1052,6 +1056,7 @@ function init() {
 
     // add the animation controls
     var gui = new dat.GUI();
+    dat.GUI.toggleHide();
     var mixerFolder = gui.addFolder("AnimationMixer")
     mixerFolder.add(stag2mixerControls, "time").listen()
     mixerFolder.add(stag2mixerControls, "timeScale", 0, 5).onChange(function (timeScale) {stag2mixer.timeScale = timeScale});
@@ -1059,7 +1064,5 @@ function init() {
     
     stag2controls = addClipActionFolder("ClipAction 1", gui, stag2clipAction, animationClip);
   }
-
   // down
-  dat.GUI.toggleHide();
 }

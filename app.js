@@ -23,16 +23,16 @@ function init() {
   {
     const skyColor = 0xB1E1FF;  // light blue
     const groundColor = 0x000000;  // black
-    const intensity = 0.8;
+    const intensity = 2;
     const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
     scene.add(light);
   }
 
   {
     const color = 0xFFFFFF;
-    const intensity = 5;
+    const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(5, 10, 20);
+    light.position.set(0, 200, 0);
     scene.add(light);
     scene.add(light.target);
   }
@@ -182,7 +182,7 @@ function init() {
   
   //Load Maps & Models  
   const gltfLoader_1 = new THREE.GLTFLoader();
-  gltfLoader_1.load('resource/map/Zoo.gltf', (gltf) => {
+  gltfLoader_1.load('resource/map/Zoo1.gltf', (gltf) => {
     
     gltf.scene.scale.set(4, 3, 4); 
     const root = gltf.scene;
@@ -191,7 +191,7 @@ function init() {
     // objects.push(root);
   });
 
-  initDefaultLighting(scene);
+  // initDefaultLighting(scene);
   // Animal Object
   // Cage1
   
@@ -208,7 +208,7 @@ function init() {
   var cowloader = new THREE.GLTFLoader();
   cowloader.load(CowPath, function (result) {
     // correctly position the scene
-    result.scene.scale.set(1.5, 1.5, 1.5);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(20.,3,30.);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
@@ -281,7 +281,7 @@ function init() {
   Bullloader.load('resource/additional/Animal/Bull.gltf', function (result) {
     // correctly position the scene
     result.scene.position.set(20.,4,15.);
-    result.scene.scale.set(1.5, 1.5, 1.5);
+    result.scene.scale.set(1, 1, 1);
     result.scene.translateY(-3);
     result.scene.rotateY(1.5*Math.PI)
     scene.add(result.scene)
@@ -354,7 +354,7 @@ function init() {
   var Horseloader = new THREE.GLTFLoader();
   Horseloader.load('resource/additional/Animal/Horse.gltf', function (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-23.,3,30.);
     result.scene.translateY(-3);
     result.scene.rotateY(0.5*Math.PI)
@@ -689,7 +689,7 @@ function init() {
   
   function Bull1 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(50.,3.5,30.);
     result.scene.translateY(-3);
     result.scene.rotateY(-2*Math.PI)
@@ -718,7 +718,7 @@ function init() {
 
   function Cow1(result) {
     // correctly position the scene
-    result.scene.scale.set(1.6, 1.6, 1.6);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(75.,3.5,30.);
     result.scene.translateY(-3);
     result.scene.rotateY(1*Math.PI)
@@ -748,7 +748,7 @@ function init() {
   function Cow2(result) {
     // correctly position the scene
     result.scene.position.set(75.,3.5,5.);
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.translateY(-3);
     result.scene.rotateY(-2*Math.PI)
     scene.add(result.scene)
@@ -777,7 +777,7 @@ function init() {
   function Bull2 (result) {
     // correctly position the scene
     result.scene.position.set(45.,3.5,5.);
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.translateY(-3);
     result.scene.rotateY(-1*Math.PI)
     scene.add(result.scene)
@@ -805,7 +805,7 @@ function init() {
 
   function Horse1 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.8, 1.8, 1.8);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-23.,4,7.);
     result.scene.translateY(-3);
     result.scene.rotateY(1.5*Math.PI)
@@ -834,7 +834,7 @@ function init() {
 
   function Horse2 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-40.,4,15.);
     result.scene.translateY(-3);
     result.scene.rotateY(-1*Math.PI)
@@ -863,7 +863,7 @@ function init() {
 
   function Horse3 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
     scene.add(result.scene)
@@ -892,7 +892,7 @@ function init() {
 
   function Horse4 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-60.,4,0.);
     result.scene.translateY(-3);
     result.scene.rotateY(0.5*Math.PI)
@@ -921,7 +921,7 @@ function init() {
 
   function deer (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-30.,4,-40.);
     result.scene.translateY(-3);
     result.scene.rotateY(0.5*Math.PI)
@@ -951,7 +951,7 @@ function init() {
     
   function deer2 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-30.,4,-75.);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
@@ -980,7 +980,7 @@ function init() {
 
   function deer3 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-60.,4,-60.);
     result.scene.translateY(-3);
     result.scene.rotateY(0.8*Math.PI)
@@ -1009,7 +1009,7 @@ function init() {
 
   function stag (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-70.,4,-40.);
     result.scene.translateY(-3);
     result.scene.rotateY(-0.3*Math.PI)
@@ -1038,7 +1038,7 @@ function init() {
 
   function stag2 (result) {
     // correctly position the scene
-    result.scene.scale.set(1.7, 1.7, 1.7);
+    result.scene.scale.set(1, 1, 1);
     result.scene.position.set(-50.,4,-75.);
     result.scene.translateY(-3);
     result.scene.rotateY(0.25*Math.PI)

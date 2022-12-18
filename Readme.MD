@@ -9,4 +9,22 @@
 | 05111940000223	| Naufal Fabian Wibowo |
 
 # Project Preview #
-!['Gambarawal'](dokumentasi/preview.png)
+Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs, pengguna bisa mengakses kebun binatang dengan controller A,W,S,D dan mouse dengan view mode First Person Controller.
+
+# List Pengerjaan #
+## Danial Farros ##
+- Pembuatan layout sketsa kebun binatang
+    ![Gambar1](./Dokumentasi/gambar1.png)
+- Penambahan Dynamic Animal
+    ![Gambar2](./Dokumentasi/Gambar2.png)
+- Penambahan Terain dan rumput dalam kandang
+    ![Gambar3](./Dokumentasi/Gambar3.png)
+- Pembuatan Sketsa kolam (polos)
+    ![Gamber4](./Dokumentasi/Gambar4.png)
+## Muh. Nur Fajrin Amiruddin ##
+
+## Naufal Fajar Imani ##
+
+## Kevin Davi Samuel ##
+
+## Naufal Fabian Wibowo ##

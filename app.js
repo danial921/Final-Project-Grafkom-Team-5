@@ -20,22 +20,38 @@ function init() {
 
   scene.background = new THREE.Color('lightblue');
 
+  initDefaultDirectionalLighting(scene);
   {
     const skyColor = 0xB1E1FF;  // light blue
     const groundColor = 0x000000;  // black
-    const intensity = 2;
+    const intensity = 1;
     const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
     scene.add(light);
   }
 
-  {
-    const color = 0xFFFFFF;
-    const intensity = 1;
-    const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(0, 200, 0);
-    scene.add(light);
-    scene.add(light.target);
-  }
+  // create an AudioListener and add it to the camera
+  const listener = new THREE.AudioListener();
+  camera.add( listener );
+
+  // create a global audio source
+  const sound = new THREE.Audio( listener );
+
+  // load a sound and set it as the Audio object's buffer
+  const audioLoader = new THREE.AudioLoader();
+  audioLoader.load( 'resource/roadtrip.mp3', function( buffer ) {
+    sound.setBuffer( buffer );
+    sound.setLoop( true );
+    sound.setVolume( 0.5 );
+    sound.play();
+  });
+
+  const light = new THREE.PointLight( 0xffff00, 1, 100 );
+  light.position.set( 12.5, 12, -29 );
+  scene.add( light );
+
+  const light1 = new THREE.PointLight( 0xffff00, 1, 100 );
+  light1.position.set( -9, 12, -98 );
+  scene.add( light1 );
 
   //First Person Locked, a better camera than just first person Controls
   let moveForward = false;
@@ -58,6 +74,7 @@ function init() {
 
   } );
 
+  //webkey
   const webs = ['https://en.wikipedia.org/wiki/Fox',
                 'https://en.wikipedia.org/wiki/Hippopotamus',
                 'https://en.wikipedia.org/wiki/Kangaroo',
@@ -68,6 +85,7 @@ function init() {
                 'https://en.wikipedia.org/wiki/Cattle',
                 'https://en.wikipedia.org/wiki/Giraffe'];
 
+  //keydown
   const onKeyDown = function ( event ) {
 
     switch ( event.code ) {
@@ -137,6 +155,7 @@ function init() {
 
   };
 
+  //keyup
   const onKeyUp = function ( event ) {
 
     switch ( event.code ) {
@@ -191,7 +210,6 @@ function init() {
     // objects.push(root);
   });
 
-  // initDefaultLighting(scene);
   // Animal Object
   // Cage1
   

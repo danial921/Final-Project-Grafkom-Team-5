@@ -24,6 +24,10 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
 ## Muh. Nur Fajrin Amiruddin ##
 
 ## Naufal Fajar Imani ##
+- Add some models (fence, lamps, tiles)
+- Texturing and Coloring Models
+- Create and adjust lighting
+- Add background music
 
 ## Kevin Davi Samuel ##
 - Pembuatan kursi kebun binatang

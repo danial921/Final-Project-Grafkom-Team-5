@@ -26,5 +26,6 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
 ## Naufal Fajar Imani ##
 
 ## Kevin Davi Samuel ##
-
+- Pembuatan kursi kebun binatang
+    ![Gambar5](./Dokumentasi/Gambar5.png)
 ## Naufal Fabian Wibowo ##

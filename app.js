@@ -182,6 +182,7 @@ function init() {
   
   //Load Maps & Models  
   const gltfLoader_1 = new THREE.GLTFLoader();
+  var objLoader = new THREE.OBJLoader();
   gltfLoader_1.load('resource/map/Zoo1.gltf', (gltf) => {
     
     gltf.scene.scale.set(4, 3, 4); 
@@ -506,6 +507,8 @@ function init() {
   
   var stag2loader = new THREE.GLTFLoader();
   stag2loader.load(ManDeerPath,stag2 );
+
+
 
   //middle
   dat.GUI.toggleHide();

@@ -81,15 +81,10 @@ function init() {
   } );
 
   //webkey
-  const webs = ['https://en.wikipedia.org/wiki/Fox',
-                'https://en.wikipedia.org/wiki/Hippopotamus',
-                'https://en.wikipedia.org/wiki/Kangaroo',
-                'https://en.wikipedia.org/wiki/Moose',
-                'https://en.wikipedia.org/wiki/Skunk',
-                'https://en.wikipedia.org/wiki/Pig',
-                'https://en.wikipedia.org/wiki/Sheep',
-                'https://en.wikipedia.org/wiki/Cattle',
-                'https://en.wikipedia.org/wiki/Giraffe'];
+  const webs = ['https://en.wikipedia.org/wiki/Cattle',
+                'https://en.wikipedia.org/wiki/Horse',
+                'https://en.wikipedia.org/wiki/Deer',
+              ];
 
   //keydown
   const onKeyDown = function ( event ) {
@@ -117,7 +112,7 @@ function init() {
         break;
 
       case 'Space':
-        if ( canJump === true ) velocity.y += 350;
+        if ( canJump === true ) velocity.y += 250;
         canJump = false;
         break;
 
@@ -132,33 +127,7 @@ function init() {
       case 'Digit3':
         window.open(webs[2], '_blank');
         break;
-
-      case 'Digit4':
-        window.open(webs[3], '_blank');
-        break;
-
-      case 'Digit5':
-        window.open(webs[4], '_blank');
-        break;
-
-      case 'Digit6':
-        window.open(webs[5], '_blank');
-        break;
-
-      case 'Digit7':
-        window.open(webs[6], '_blank');
-        break;
-
-      case 'Digit8':
-        window.open(webs[7], '_blank');
-        break;
-
-      case 'Digit9':
-        window.open(webs[8], '_blank');
-        break;
-
     }
-
   };
 
   //keyup

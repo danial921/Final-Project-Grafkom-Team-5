@@ -53,6 +53,12 @@ function init() {
   light1.position.set( -9, 12, -98 );
   scene.add( light1 );
 
+  const geometry = new THREE.SphereGeometry( 5, 32, 16 );
+  const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+  const sphere = new THREE.Mesh( geometry, material );
+  sphere.position.set(100, 200, 200);
+  scene.add( sphere );
+
   //First Person Locked, a better camera than just first person Controls
   let moveForward = false;
   let moveBackward = false;
@@ -207,7 +213,6 @@ function init() {
     const root = gltf.scene;
     root.position.set(0, 0, 0);
     scene.add(root);
-    // objects.push(root);
   });
 
   // Animal Object

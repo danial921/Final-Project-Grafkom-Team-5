@@ -182,7 +182,6 @@ function init() {
   
   //Load Maps & Models  
   const gltfLoader_1 = new THREE.GLTFLoader();
-  var objLoader = new THREE.OBJLoader();
   gltfLoader_1.load('resource/map/Zoo1.gltf', (gltf) => {
     
     gltf.scene.scale.set(4, 3, 4); 

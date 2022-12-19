@@ -25,8 +25,12 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
 
 ## Naufal Fajar Imani ##
 - Add some models (fence, lamps, tiles)
+    ![naufal_addmodel](./Dokumentasi/naufal_addmodel.png)
 - Texturing and Coloring Models
+    ![naufal_texture_color](./Dokumentasi/naufal_texture_color.png)
 - Create and adjust lighting
+    ![naufal_light1](./Dokumentasi/naufal_light1.png)
+    ![naufal_light2](./Dokumentasi/naufal_light2.png)
 - Add background music
 
 ## Kevin Davi Samuel ##

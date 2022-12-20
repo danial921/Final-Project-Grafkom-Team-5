@@ -21,7 +21,10 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
     ![Gambar3](./Dokumentasi/Gambar3.png)
 - Pembuatan Sketsa kolam (polos)
     ![Gamber4](./Dokumentasi/Gambar4.png)
+
 ## Muh. Nur Fajrin Amiruddin ##
+- Add model tree
+![Gambar6](./Dokumentasi/Gambar6.jpg)
 
 ## Naufal Fajar Imani ##
 - Add some models (fence, lamps, tiles)
@@ -36,4 +39,5 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
 ## Kevin Davi Samuel ##
 - Pembuatan kursi kebun binatang
     ![Gambar5](./Dokumentasi/Gambar5.png)
+    
 ## Naufal Fabian Wibowo ##

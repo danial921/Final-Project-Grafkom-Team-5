@@ -14,31 +14,31 @@ Final Project ini menghadirkan replika kebun binatang yang di buat dalam threejs
 # List Pengerjaan #
 ## Danial Farros ##
 - Pembuatan layout sketsa kebun binatang
-    ![Gambar1](./Dokumentasi/gambar1.png)
+    ![Gambar1](./dokumentasi/gambar1.png)
 - Penambahan Dynamic Animal
-    ![Gambar2](./Dokumentasi/Gambar2.png)
+    ![Gambar2](./dokumentasi/Gambar2.png)
 - Penambahan Terain dan rumput dalam kandang
-    ![Gambar3](./Dokumentasi/Gambar3.png)
+    ![Gambar3](./dokumentasi/Gambar3.png)
 - Pembuatan Sketsa kolam (polos)
-    ![Gamber4](./Dokumentasi/Gambar4.png)
+    ![Gamber4](./dokumentasi/Gambar4.png)
 - Penambahan fitur login dengan framework laravel
 
 ## Muh. Nur Fajrin Amiruddin ##
 - Add model tree
-![Gambar6](./Dokumentasi/Gambar6.jpg)
+![Gambar6](./dokumentasi/Gambar6.jpg)
 
 ## Naufal Fajar Imani ##
 - Add some models (fence, lamps, tiles)
-    ![naufal_addmodel](./Dokumentasi/naufal_addmodel.png)
+    ![naufal_addmodel](./dokumentasi/naufal_addmodel.png)
 - Texturing and Coloring Models
-    ![naufal_texture_color](./Dokumentasi/naufal_texture_color.png)
+    ![naufal_texture_color](./dokumentasi/naufal_texture_color.png)
 - Create and adjust lighting
-    ![naufal_light1](./Dokumentasi/naufal_light1.png)
-    ![naufal_light2](./Dokumentasi/naufal_light2.png)
+    ![naufal_light1](./dokumentasi/naufal_light1.png)
+    ![naufal_light2](./dokumentasi/naufal_light2.png)
 - Add background music
 
 ## Kevin Davi Samuel ##
 - Pembuatan kursi kebun binatang
-    ![Gambar5](./Dokumentasi/Gambar5.png)
+    ![Gambar5](./dokumentasi/Gambar5.png)
     
 ## Naufal Fabian Wibowo ##
